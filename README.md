@@ -1,1 +1,1 @@
-# devops-practices
+Demonstrate variables pass-through between stages in DevOps
