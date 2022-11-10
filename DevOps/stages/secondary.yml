@@ -1,0 +1,4 @@
+stages:
+  - stage: secondary_stage
+    jobs:
+    - template: ../jobs/secondary.yml

@@ -1,0 +1,13 @@
+jobs:
+  - deployment: 'core'
+    displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
+    pool:
+      name: Default
+      demands:
+        - Agent.OS -equals Linux
+    environment: "Primary"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
