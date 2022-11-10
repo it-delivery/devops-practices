@@ -1,6 +1,6 @@
 jobs:
   - deployment: 'core'
-    displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
+    displayName: "${{ format ('Deploy {0} stage',  'Primary') }}"
     pool:
       name: Default
       demands:
