@@ -2,7 +2,7 @@ jobs:
   - deployment: 'core'
     displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
     pool:
-      name: Default
+      name: 'Azure Pipelines'
       demands:
         - Agent.OS -equals Linux
     environment: "Secondary"
