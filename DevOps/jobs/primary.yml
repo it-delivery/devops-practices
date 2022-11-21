@@ -1,5 +1,5 @@
 jobs:
-  - deployment: 'core'
+  - deployment: 'primary'
     displayName: "${{ format ('Deploy {0} stage',  'Primary') }}"
     pool:
       name: 'Azure Pipelines'
