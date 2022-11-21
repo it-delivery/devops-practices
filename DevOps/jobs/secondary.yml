@@ -4,11 +4,13 @@ parameters:
     default: ''
   - name: RandomString2
     type: string
+    default: ''
   - name: RandomString3
     type: string
     default: ''
   - name: RandomString4
     type: string
+    default: ''
 
 jobs:
   - deployment: 'secondary'
