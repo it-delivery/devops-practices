@@ -15,3 +15,5 @@ Write-Output -InputObject $exportedVisibleOutput
 
 $exportedHiddenOutput = "##vso[task.setvariable variable=RandomString4;issecret=true;isOutput=true]$RandomString4"
 Write-Output -InputObject $exportedHiddenOutput
+
+Get-ChildItem Env: | Where-Object {$_.Name -like "RandomString*"} | Format-List

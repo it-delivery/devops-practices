@@ -37,7 +37,7 @@ jobs:
             - task: PowerShell@2
               inputs:
                 targetType: 'inline'
-                script: 'Get-ChildItem env: | fl'
+                script: 'Get-ChildItem Env: | Where-Object {$_.Name -like "RandomString*"} | Format-List'
                 pwsh: true
               displayName: "Read Environment Variables"
               name: readEnvironmentVariables
