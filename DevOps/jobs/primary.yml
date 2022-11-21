@@ -10,3 +10,8 @@ jobs:
         deploy:
           steps:
             - checkout: self
+
+            - pwsh:
+              inputs:
+                targetType: 'filePath'
+                filePath: $(System.DefaultWorkingDirectory)\helpers\New-Variables.1
