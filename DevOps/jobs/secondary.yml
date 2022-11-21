@@ -13,7 +13,7 @@ parameters:
     default: ''
 
 jobs:
-  - deployment: 'secondary'
+  - deployment: 'secondary_job'
     displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
     pool:
       name: 'Azure Pipelines'
