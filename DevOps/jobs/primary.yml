@@ -1,0 +1,20 @@
+jobs:
+  - deployment: 'primary_job'
+    displayName: "${{ format ('Deploy {0} stage',  'Primary') }}"
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: 'ubuntu-latest'
+    environment: "Primary"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+
+            - task: PowerShell@2
+              inputs:
+                targetType: 'filePath'
+                filePath: $(System.DefaultWorkingDirectory)/DevOps/helpers/New-Variables.ps1
+                pwsh: true
+              displayName: "Export Random Variables"
+              name: exportRandomVariables

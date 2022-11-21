@@ -1,0 +1,4 @@
+stages:
+  - stage: primary_stage
+    jobs:
+    - template: ../jobs/primary.yml
