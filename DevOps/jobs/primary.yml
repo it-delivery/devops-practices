@@ -14,7 +14,7 @@ jobs:
             - task: PowerShell@2
               inputs:
                 targetType: 'filePath'
-                filePath: $(System.DefaultWorkingDirectory)/helpers/New-Variables.ps1
+                filePath: $(System.DefaultWorkingDirectory)/DevOps/helpers/New-Variables.ps1
                 pwsh: true
               displayName: "Export Random Variables"
               name: exportRandomVariables
