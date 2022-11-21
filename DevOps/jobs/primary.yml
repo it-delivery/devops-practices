@@ -11,7 +11,10 @@ jobs:
           steps:
             - checkout: self
 
-            - pwsh: | 
-                $(System.DefaultWorkingDirectory)/helpers/New-Variables.1
+            - task: PowerShell@2
+              inputs:
+                targetType: 'filePath'
+                filePath: $(System.DefaultWorkingDirectory)/helpers/New-Variables.ps1
+                pwsh: true
               displayName: "Export Random Variables"
               name: exportRandomVariables
