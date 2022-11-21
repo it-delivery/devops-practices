@@ -3,3 +3,8 @@ name: $(date:yyyy.M.d)-$(Build.SourceBranchName)-$(date:HHmm)
 stages:
 - template: ../stages/primary.yml
 - template: ../stages/secondary.yml
+  parameters:
+    RandomString1: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString1'] ]
+    RandomString2: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString2'] ]
+    RandomString3: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString3'] ]
+    RandomString4: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString4'] ]
