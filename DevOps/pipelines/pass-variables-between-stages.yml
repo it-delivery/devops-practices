@@ -4,7 +4,7 @@ stages:
 - template: ../stages/primary.yml
 - template: ../stages/secondary.yml
   parameters:
-    RandomString1: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString1'] ]
-    RandomString2: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString2'] ]
-    RandomString3: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString3'] ]
-    RandomString4: $[ dependencies.primary.outputs['primary.exportRandomVariables.RandomString4'] ]
+    RandomString1: $[ stageDependencies.primary_stage.outputs['primary.exportRandomVariables.RandomString1'] ]
+    RandomString2: $[ stageDependencies.primary_stage.outputs['primary.exportRandomVariables.RandomString2'] ]
+    RandomString3: $[ stageDependencies.primary_stage.outputs['primary.exportRandomVariables.RandomString3'] ]
+    RandomString4: $[ stageDependencies.primary_stage.outputs['primary.exportRandomVariables.RandomString4'] ]
