@@ -10,3 +10,11 @@ jobs:
         deploy:
           steps:
             - checkout: self
+
+            - task: PowerShell@2
+              inputs:
+                targetType: 'inline'
+                script: 'Get-ChildItem env: | fl'
+                pwsh: true
+              displayName: "Read Environment Variables"
+              name: readEnvironmentVariables
