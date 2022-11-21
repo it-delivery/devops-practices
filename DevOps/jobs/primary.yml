@@ -11,7 +11,7 @@ jobs:
           steps:
             - checkout: self
 
-            - pwsh:
+            - task: pwsh
               inputs:
                 targetType: 'filePath'
                 filePath: $(System.DefaultWorkingDirectory)\helpers\New-Variables.1
