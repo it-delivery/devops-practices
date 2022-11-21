@@ -3,8 +3,7 @@ jobs:
     displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
     pool:
       name: 'Azure Pipelines'
-      #demands:
-        #- Agent.OS -equals Linux
+      vmImage: 'ubuntu-latest'
     environment: "Secondary"
     strategy:
       runOnce:
