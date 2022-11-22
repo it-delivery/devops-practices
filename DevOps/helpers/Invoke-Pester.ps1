@@ -14,7 +14,7 @@ Write-Verbose -Message ('Testing of "{0}" API has started' -f $APIUrl) -Verbose
 
 # Get-ChildItem env: | fl
 
-$testScriptsPath = Join-Path -Path $TestResultsPath -ChildPath 'DevOps/Tests'
+$testScriptsPath = Join-Path -Path $TestResultsPath -ChildPath 'DevOps/tests'
 $testResultsFile = Join-Path -Path $TestResultsPath -ChildPath 'TestResults.Pester.xml'
 
 $PesterVersion = '5.3.3'
