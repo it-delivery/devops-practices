@@ -17,7 +17,7 @@ parameters:
 
 jobs:
   - deployment: 'testing_job'
-    displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
+    displayName: "${{ format ('Run {0} stage',  'Testing') }}"
     pool:
       name: 'Azure Pipelines'
       vmImage: 'ubuntu-latest'
