@@ -45,7 +45,8 @@ jobs:
                 scriptPath: '$(System.DefaultWorkingDirectory)/DevOps/helpers/Invoke-Pester.ps1'
                 ScriptArguments: '-APIUrl $(APIUrl)'
                 pwsh: $true
-                
+              displayName: "Execut Unit Testing"   
+
             - task: PublishTestResults@2
               inputs:
                 testRunner: "NUnit"
