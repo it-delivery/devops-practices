@@ -3,14 +3,14 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    $APIUrl,
+    $Url,
 
     [Parameter(Mandatory = $false)]
     [string]$TestResultsPath = $ENV:BUILD_SOURCESDIRECTORY
 )
 
 
-Write-Verbose -Message ('Testing of "{0}" API has started' -f $APIUrl) -Verbose
+Write-Verbose -Message ('Testing of "{0}" URL has started' -f $Url) -Verbose
 
 # Get-ChildItem env: | fl
 
@@ -29,7 +29,7 @@ Import-Module -Name Pester -RequiredVersion $PesterVersion -Force | Out-Null
 if (Test-Path $testScriptsPath) {
 
     $PesterContainer = New-PesterContainer -Path "$testScriptsPath/api.tests.ps1" -Data @{
-        APIUrl = $APIUrl
+        Url = $Url
     }
 
     $PesterConfiguration = [PesterConfiguration]@{

@@ -1,13 +1,13 @@
 [CmdletBinding()]
 param (
     [Parameter()]
-    $APIUrl
+    $Url
 )
 
 Describe "API Tests" {
 
     BeforeDiscovery {
-        $script:BaseUri = $APIUrl
+        $script:BaseUri = $Url
         $script:Headers = @{
             'Content-Type'    = 'application/json'
         }
@@ -18,7 +18,7 @@ Describe "API Tests" {
             $response = (Invoke-WebRequest -Method Get -Uri $BaseUri -Headers $Headers -UseBasicParsing).Content
         }
         It "Should return a 200" {
-            $response = Invoke-WebRequest -Uri $APIUrl
+            $response = Invoke-WebRequest -Uri $Url
             $response.StatusCode | Should -Be 200
         }
     }
