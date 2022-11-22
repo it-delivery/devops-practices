@@ -31,7 +31,7 @@ jobs:
         value: ${{ parameters.RandomString3 }}
       - name: RandomString4
         value: ${{ parameters.RandomString4 }}
-      - ${{ if ne(parameters.variableGroupName, '') }}:
+      - ${{ if ne(parameters.variablesGroupName, '') }}:
         - group: ${{ parameters.variablesGroupName }}
     strategy:
       runOnce:
