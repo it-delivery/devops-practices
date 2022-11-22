@@ -1,0 +1,10 @@
+stages:
+  - stage: automated_testing_stage
+    jobs:
+    - template: ../jobs/testing.yml
+      parameters:
+        RandomString1: $[ stageDependencies.primary_stage.primary_job.outputs['primary_job.exportRandomVariables.RandomString1'] ]
+        RandomString2: $[ stageDependencies.primary_stage.primary_job.outputs['primary_job.exportRandomVariables.RandomString2'] ]
+        RandomString3: $[ stageDependencies.primary_stage.primary_job.outputs['primary_job.exportRandomVariables.RandomString3'] ]
+        RandomString4: $[ stageDependencies.primary_stage.primary_job.outputs['primary_job.exportRandomVariables.RandomString4'] ]
+        variablesGroupName: 'PesterTests'

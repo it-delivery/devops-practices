@@ -1,0 +1,67 @@
+parameters:
+  - name: RandomString1
+    type: string
+    default: ''
+  - name: RandomString2
+    type: string
+    default: ''
+  - name: RandomString3
+    type: string
+    default: ''
+  - name: RandomString4
+    type: string
+    default: ''
+  - name: variablesGroupName
+    type: string
+    default: ''
+
+jobs:
+  - deployment: 'testing_job'
+    displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
+    pool:
+      name: 'Azure Pipelines'
+      vmImage: 'ubuntu-latest'
+    environment: "Secondary"
+    variables:
+      - name: RandomString1
+        value: ${{ parameters.RandomString1 }}
+      - name: RandomString2
+        value: ${{ parameters.RandomString2 }}
+      - name: RandomString3
+        value: ${{ parameters.RandomString3 }}
+      - name: RandomString4
+        value: ${{ parameters.RandomString4 }}
+      - ${{ if ne(parameters.variableGroupName, '') }}:
+        - group: ${{ parameters.variablesGroupName }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+
+            - task: AzurePowerShell@5
+              inputs:
+                azureSubscription:  $(ConnectedServiceName)
+                scriptType: "FilePath"
+                scriptPath: '$(System.DefaultWorkingDirectory)/DevOps/helpers/Invoke-Pester.ps1'
+                ScriptArguments: '-APIUrl $(APIUrl)'
+                azurePowerShellVersion: "latestVersion"
+                
+            - task: PublishTestResults@2
+              inputs:
+                testRunner: "NUnit"
+                testResultsFiles: "**/TestResults.Pester.xml"
+                testRunTitle: "API Testing"
+                failTaskOnFailedTests: true
+              displayName: "Publish Unit Test Results"
+              condition: in(variables['Agent.JobStatus'], 'Succeeded', 'SucceededWithIssues', 'Failed')
+
+            - task: PublishCodeCoverageResults@1
+              inputs:
+                summaryFileLocation: "**/CodeCoverage.xml"
+                failIfCoverageEmpty: false
+              displayName: "Publish Unit Test Code Coverage"
+              condition: and(in(variables['Agent.JobStatus'], 'Succeeded', 'SucceededWithIssues', 'Failed'), eq(variables['System.PullRequest.IsFork'], false))
+
+            - powershell: |
+                Write-Host "Testing succeeded!" 
