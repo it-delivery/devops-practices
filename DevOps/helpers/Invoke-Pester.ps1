@@ -12,7 +12,7 @@ param (
 
 Write-Verbose -Message ('Testing of "{0}" URL has started' -f $Url) -Verbose
 
-# Get-ChildItem env: | fl
+Get-ChildItem env: | fl
 
 $testScriptsPath = Join-Path -Path $TestResultsPath -ChildPath 'DevOps/tests'
 $testResultsFile = Join-Path -Path $TestResultsPath -ChildPath 'TestResults.Pester.xml'
