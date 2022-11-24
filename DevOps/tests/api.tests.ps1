@@ -25,7 +25,7 @@ Describe "API Tests" {
 
     Context "Correct response" {
         BeforeAll{
-            $Content = (Invoke-WebRequest -Method Post -Uri ($BaseUri + "/api/function1") -Headers $Headers -UseBasicParsing).Content
+            $Content = (Invoke-WebRequest -Method Post -Uri $BaseUri -Headers $Headers -UseBasicParsing).Content
         }
         It "Should return a valid response" {
             $Content | Should -NotBeNullOrEmpty
