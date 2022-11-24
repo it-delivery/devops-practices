@@ -43,7 +43,7 @@ jobs:
               inputs:
                 targetType: "FilePath"
                 filePath: $(System.DefaultWorkingDirectory)/DevOps/helpers/Invoke-Pester.ps1
-                ScriptArguments: '-Url $(URL)'
+                ScriptArguments: "-Url $ENV:URL"
                 pwsh: $true
               displayName: "Execut Unit Testing"   
 
