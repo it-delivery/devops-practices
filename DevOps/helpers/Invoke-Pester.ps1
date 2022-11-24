@@ -2,8 +2,8 @@
 
 [CmdletBinding()]
 param (
-    [Parameter()]
-    $Url,
+    [Parameter(Mandatory = $false)]
+    [string]$Url = $ENV:URL,
 
     [Parameter(Mandatory = $false)]
     [string]$TestResultsPath = $ENV:BUILD_SOURCESDIRECTORY
