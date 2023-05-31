@@ -2,8 +2,7 @@ jobs:
   - deployment: 'primary_job'
     displayName: "${{ format ('Deploy {0} stage',  'Primary') }}"
     pool:
-      name: 'Azure Pipelines'
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     environment: "Primary"
     strategy:
       runOnce:

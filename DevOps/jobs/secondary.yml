@@ -16,8 +16,7 @@ jobs:
   - deployment: 'secondary_job'
     displayName: "${{ format ('Deploy {0} stage',  'Secondary') }}"
     pool:
-      name: 'Azure Pipelines'
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     environment: "Secondary"
     variables:
       - name: RandomString1

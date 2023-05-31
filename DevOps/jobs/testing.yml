@@ -19,8 +19,7 @@ jobs:
   - deployment: 'testing_job'
     displayName: "${{ format ('Run {0} stage',  'Testing') }}"
     pool:
-      name: 'Azure Pipelines'
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     environment: "Secondary"
     variables:
       - name: RandomString1
